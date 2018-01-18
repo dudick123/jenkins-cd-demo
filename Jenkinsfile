@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Environmnet Validations') {
+    stage('Stage 1') {
       steps {
-        echo 'Hello Environment'
+        echo 'Step 1'
       }
     }
   }

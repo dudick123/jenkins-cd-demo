@@ -6,7 +6,7 @@ pipeline {
         echo 'Step 1'
         echo 'Step 2'
         echo 'Step 3'
-        echo 'Step 4'
+        echo 'something'
       }
     }
   }

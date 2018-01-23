@@ -14,14 +14,13 @@ pipeline {
       parallel {
         stage('Web Deployment') {
           steps {
-            echo 'Build Docker Image'
+            echo 'Prepare Web Image'
           }
         }
         stage('Database Deployment') {
           steps {
-            echo 'Perform Database Updates'
-            echo 'Database DDL Updates'
-            echo 'Database DML Updates'
+            echo 'Prepare DDL Image'
+            echo 'Prepare DML Image'
           }
         }
       }
@@ -38,13 +37,13 @@ pipeline {
       parallel {
         stage('Web Validation') {
           steps {
-            echo 'Test Docker Containers'
+            echo 'Test Web Container'
           }
         }
         stage('Database Validation') {
           steps {
-            echo 'DDL Validation'
-            echo 'DML Validation'
+            echo 'Run DDL Validation'
+            echo 'Run DML Validation'
           }
         }
       }

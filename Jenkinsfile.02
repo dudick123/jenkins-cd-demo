@@ -1,0 +1,28 @@
+pipeline {
+  agent any
+  stages {
+    stage('foo') {
+      steps {
+        sh 'printenv'
+        sh 'echo "FOO is $FOO and BAR is $BAR"'
+        sh 'echo "CREDS ARE $DOCKER_HUB_CREDS"'
+        sh 'echo "CREDS ARE $DOCKER_HUB_CREDS_USR"'
+      }
+    }
+    stage('foo2') {
+      steps {
+        sh 'echo "FOO is $FOO and BAR is $BAR"'
+        sh 'echo "FOO is $FOO and BAR is $BAR"'
+        catchError() {
+          echo 'hello from try'
+        }
+        sh 'echo $FOO_USR > foo_usr.txt'
+      }
+    }
+  }
+  environment {
+    FOO = '123'
+    BAR = '987'
+    DOCKER_HUB_CREDS = credentials('DOCKER_HUB_CREDS')
+  }
+}
